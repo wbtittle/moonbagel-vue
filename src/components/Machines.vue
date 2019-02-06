@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="machines">
     <h1>Machines</h1>
-    <Machine v-for="machine in machines" :key="machine.id" ...machine />
+    <Machine v-for="machine in machines" :key="machine.id" v-bind:machine="machine" />
   </div>
 </template>
 
@@ -11,17 +11,10 @@ import Machine from './Machine.vue'
 
 export default {
   name:'Machines',
-  computed: {
-    image() { return this.props.src },
-    name() { return this.props.isReadable?this.props.name:"?????????" },
-  },
-  methods:{
-    clickMachine(){ }
-  },
   components:{
       Machine
   },
-  ...mapState(['machines'])
+  computed: mapState(['machines'])
 }
 </script>
 

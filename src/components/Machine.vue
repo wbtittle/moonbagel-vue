@@ -1,26 +1,29 @@
 <template lang="html">
-  <button :disabled=disabled id={this.props.id} key={this.props.id} @click="clickMachine" class="machine">
-      <img :src=image :alt=name />
+  <button :disabled=disabled id={this.machine.id} key={this.machine.id} @click="clickMachine" class="machine">
+
+      <img width="10%" :src=image :alt=name />
       <span class="name">{{ name }}</span>
-      <span class="price">{{ Math.floor(this.props.cost,2) }}</span>
-      <span class="produces">{{ Math.floor(this.props.generates,2) }}</span>
-      <span class="owned">#{{ this.props.owned }}</span>
+      <span class="price">{{ Math.floor(this.machine.cost,2) }}</span>
+      <span class="produces">{{ Math.floor(this.machine.generates,2) }}</span>
+      <span class="owned">#{{ this.machine.owned }}</span>
   </button>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 export default {
-  name:'Machine',
+  name: 'Machine',
+  props: ['machine'],
   computed: {
-    image() { return this.props.src },
-    name() { return this.props.isReadable?this.props.name:"?????????" },
-    disabled() {return this.bagel.produced<this.props.cost }
+    image() { return this.machine.src },
+    name() { return this.machine.isReadable?this.machine.name:"?????????" },
+    disabled() {return this.bagel.produced<this.machine.cost },
+    ...mapState(['bagel'])
   },
   methods:{
     clickMachine(){ }
   },
-  ...mapState(['bagel'])
+
 }
 </script>
 
