@@ -7,19 +7,19 @@
 </template>
 
 <script>
+
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'Bagel',
-  data: function() {
-    return {
-      bagel: { icon: "/img/bagel-garlic.png", produced: 0, production:0 }
-    }
-  },
   computed: {
-    image(){ return this.bagel.icon }
+    image(){ return this.bagel.icon },
+    ...mapState(['bagel'])
   },
-  methods:{
-    makeBagel: function(){ alert('hello');}
+  methods: {
+    ...mapActions(['makeBagel'])
   }
+
 }
 </script>
 

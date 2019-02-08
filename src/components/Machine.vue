@@ -1,10 +1,10 @@
 <template lang="html">
-  <button :disabled=disabled id={this.machine.id} key={this.machine.id} @click="clickMachine" class="machine">
+  <button :disabled=disabled id={this.machine.id} key={this.machine.id} @click="buyMachine(machine.id)" class="machine">
 
       <img width="10%" :src=image :alt=name />
-      <span class="name">{{ name }}</span>
-      <span class="price">{{ Math.floor(this.machine.cost,2) }}</span>
-      <span class="produces">{{ Math.floor(this.machine.generates,2) }}</span>
+      <span class="name">{{ name }}</span> |
+      <span class="price">{{ Math.floor(this.machine.cost,2) }}</span> |
+      <span class="produces">{{ Math.floor(this.machine.generates,2) }}</span> |
       <span class="owned">#{{ this.machine.owned }}</span>
   </button>
 </template>
@@ -21,7 +21,9 @@ export default {
     ...mapState(['bagel'])
   },
   methods:{
-    clickMachine(){ }
+    buyMachine(id){
+      this.$store.dispatch('buyMachine', id)
+    }
   },
 
 }

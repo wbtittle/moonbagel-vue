@@ -17,9 +17,23 @@ export default new Vuex.Store({
 
   },
   mutations: {
+    makeBagel(state){
+      state.bagel.produced += 1;
+    },
 
+    buyMachine(state, id){
+      state.machines = state.machines.map( machine => { if (machine.id === id ) machine.owned++; return machine });
+    }
   },
   actions: {
+    makeBagel({ commit }){
+      commit('makeBagel');
+    },
+
+    buyMachine({ commit }, machine){
+      commit('buyMachine', machine )
+    }
+
 
   }
 })

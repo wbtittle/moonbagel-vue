@@ -1,5 +1,5 @@
 var defaultBagel = {
-  production: 0,
+  production: 1,
   produced: 0,
   icon: 'img/bagel-sesame.png'
 }
