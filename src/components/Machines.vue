@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="machines">
     <h1>Machines</h1>
-    <Machine v-for="machine in machines" :key="machine.id" v-bind:machine="machine" />
+    <Machine v-for="machine in visibleMachines" :key="machine.id" v-bind:machine="machine" />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import Machine from './Machine.vue'
 
 export default {
@@ -14,7 +14,9 @@ export default {
   components:{
       Machine
   },
-  computed: mapState(['machines'])
+  computed: {
+    ...mapGetters(['visibleMachines'])
+  }
 }
 </script>
 
