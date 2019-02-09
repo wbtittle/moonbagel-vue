@@ -12,12 +12,15 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Bagel',
+  timers:{
+    produceBagels: { time: 1000, autostart: true, repeat: true }
+  },
   computed: {
     image(){ return this.bagel.icon },
     ...mapState(['bagel'])
   },
   methods: {
-    ...mapActions(['makeBagel'])
+    ...mapActions(['makeBagel', 'produceBagels'])
   }
 
 }
